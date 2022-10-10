@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 125, 12, 1);
+            height: 100px;
+            box-shadow: 0 3px 5px rgb(0 0 0 /20%);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .h-logo {
+            margin-left: 30px;
+        }
+
+        .h-adress {
+            font-size: 25px;
+            color: white;
+            text-decoration: underline;
+        }
+
+        .h-symbols {
+            margin-right: 30px;
+        }
+
+        .overpart {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .restaurant {
+            margin-top: 80px;
+            background-color: rgb(218, 216, 216);
+            width: 75%;
+        }
+
+        .basket {
+            margin-top: 80px;
+            height: 800px;
+            background-color: rgb(239, 236, 236);
+            width: 25%;
+            position: fixed;
+            right: 0;
+            top: 20px;
+        }
+
+        .basket-headdesign {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            height: 40px;
+            border-bottom: 2px solid lightgray;
+            font-size: 1.5em;
+        }
+
+        .basket-empty-design {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .basket-symbol-design {
+            margin-top: 80px;
+
+        }
+
+        .basket-symbol-design img {
+            height: 40px;
+
+        }
+
+        .basket-empty-text {
+            width: 80%;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 1.2em;
+
+
+        }
+
+        .basketContents {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+        .price-div {
+
+            width: 100%;
+
+        }
+
+        .subtotal {
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        .total-price {
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 10px;
+            margin-bottom: 30px;
+
+        }
+
+        .border {
+            height: 10px;
+            margin-left: 8%;
+            margin-right: 8%;
+            border-bottom: 3px solid lightgray;
+        }
+
+        .presentation-part {
+            display: flex;
+            flex-direction: column;
+            
+        }
+
+        .rest-img {
+            margin: -3px;
+        }
+
+        .rest-img img {
+            object-fit: cover;
+            width: 100%;
+            height: 250px;
+        }
+
+        .rest-info {
+            height: 100px;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .rest-logo img {
+            width: 130px;
+            object-fit: cover;
+            border-radius: 100%;
+            margin-right: 50px;
+            margin-bottom: 90px;
+
+        }
+
+        .meals {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+        }
+
+        .meal-container {
+            width: 90%;
+            border: 2px solid rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            margin: 20px;
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .ButtonDiv {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            position: relative;
+            bottom: 8%;
+
+        }
+
+        .AddButton {
+            font-size: 2em;
+            color: blue;
+            font-weight: bolder;
+        }
+
+        .FoodDish {
+            font-size: 1.6em;
+            font-weight: 800;
+        }
+
+        .FoodDescription {
+            font-size: 1.1em;
+        }
+
+        .FoodAdds {
+            font-size: 1.0em;
+        }
+
+        .FoodPrice {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: rgba(201, 125, 26, 0.96);
+        }
+
+        .test {
+            display: flex;
+            justify-content: space-around;
+            font-size: 20px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .test1 {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            
+        }
+
+        .littleBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20px;
+            width: 24px;
+            border: 2px solid rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            margin-left: 4px;
+            margin-right: 4px;
+            font-weight: bold;
+
+        }
+
+        .basketIconPencil {
+            display: flex;
+            align-items: center;
+            margin-left: 5px;
+        }
+        .basketIconPencil img {
+            height: 20px;
+            
+        }
+
+        .basketIconBasket {
+            display: flex;
+            align-items: center;
+            margin-left: -15px;
+        }
+        .basketIconBasket img {
+            height: 20px;
+        }
+    </style>
+
+    <script>
+
+
+    </script>
+</head>
+
+<body onload="addMeal()">
+    <div class="header">
+        <div class="h-logo">Logo</div>
+        <div class="h-adress">Adresse</div>
+        <div class="h-symbols">Symbole</div>
+    </div>
+    <div class="overpart">
+        <div class="restaurant">
+            <div class="presentation-part">
+                <div class="rest-img">
+                    <img src="img/pizza-head.jpg">
+                </div>
+                <div class="rest-info">
+                    <div>Mein Restaurant <br> Bewertung</div>
+                    <div class="rest-logo"><img src="img/restaurant-logo.jpg" alt=""></div>
+                    <div>Icon Icon</div>
+                </div>
+
+            </div>
+            
+
+            <div id="meals">
+                
+            </div>
+        </div>
+        <div class="basket">
+            <div class="basket-headdesign">Warenkorb</div>
+
+            <div id="basket"></div>
+            <div class="basket-empty-design">
+
+                
+                <div class="basket-symbol-design">
+                    <img src="img/basket.png">
+                </div>
+                <div class="basket-empty-text">
+                    Wähle leckere Gerichte aus der Karte und füge Sie hinzu!
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div class="border"></div>
+
+            <div class="price-div">
+                <div class="subtotal">
+                    <div>Zwischensumme</div>
+                    <div>0,00€</div>
+                </div>
+                <div class="total-price">
+                    <div>Gesamt</div>
+                    <div>0,00€</div>
+                </div>
+            </div>
+
+            <div class="border"></div>
+
+            <div>Text</div>
+            <br>
+            <br>
+            <br>
+            <div>button bestellen
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

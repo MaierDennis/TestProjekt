@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <title>Bilder</title>
+
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin-bottom: 2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80px;
+            font-size: 60px;
+            font-family: 'Caveat', cursive;
+            background-color: rgb(236, 228, 228);
+            box-shadow: 0 3px 5px rgb(0 0 0 /30%);
+        }
+
+        .inputField {
+            position: fixed;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            
+        }
+
+        .imgcontainer {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 80px;
+
+        }
+
+
+
+        .imgbox  {
+            object-fit: cover;
+            height: 150px;
+            
+
+        }
+
+        .singlePicture {
+
+            background-color: black;
+            z-index: 1;
+            position: fixed;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            
+
+        }
+
+        .singlePicture img {
+            height: 80vh;
+            width: 80vw;
+            object-fit: contain;
+            top: auto;
+        }
+
+        .d-none {
+            display: none;
+        }
+
+        .closeButton {
+            height: 30px !important;
+            
+            
+        }
+        .forButton {
+            z-index: 2;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            width: 30px;
+            position: fixed;
+            top: 30px;
+            right: 30px;
+
+        }
+
+        .littleX {
+            position: absolute;
+            height: 30px;
+        }
+
+
+        .flex {
+            display: flex;
+            justify-content: end;
+            align-items: flex-start;
+        }
+
+        .margin {
+            margin: 10px;
+        }
+    </style>
+
+
+
+
+
+    <script>
+        let images = ['img/1.jpg', 'img/2.jpg', 'img/3.jpg', 'img/4.jpg', 'img/5.jpg', 'img/6.jpg'];
+
+        function deletePhoto (i){
+            images.splice(i, 1);
+
+            loadPhotos();
+
+        }
+
+        function addPhoto(){
+            let photo = document.getElementById('inputPhoto').value;
+
+            images.push(photo);
+
+            loadPhotos();
+
+        }
+
+
+        function loadPhotos() {
+            document.getElementById('loadPhotos').innerHTML = '';
+            for (i = 0; i < images.length; i++) {
+                document.getElementById('loadPhotos').innerHTML += `
+                <div  class="flex margin" >
+                <img onclick="openImage(${i})" class="imgbox" src="${images[i]}">
+                <img class="littleX" src="img/X.jpg" onclick="deletePhoto(${[i]})">
+                </div>
+            `;
+            }
+
+        }
+        function openImage(actualphoto) {
+            document.getElementById('singlePicture').classList.remove('d-none');
+            document.getElementById('loadPhotos').classList.remove('imgcontainer');
+            document.getElementById('header').classList.add('d-none');
+            document.getElementById('singlePicture').innerHTML = `
+            <div class="forButton">
+            <img class="closeButton" onclick="closeImage()" src="img/X.jpg">
+            </div>
+            <img class="singlePicture"  src="${images[actualphoto]}">
+            
+            `;
+        }
+
+        function closeImage() {
+            document.getElementById('singlePicture').classList.add('d-none');
+            document.getElementById('header').classList.remove('d-none');
+            document.getElementById('loadPhotos').classList.add('imgcontainer');
+
+        }
+    </script>
+
+</head>
+
+<body onload="loadPhotos()">
+    <div id="header"class="header">My Photos
+        <div class="inputField"><input id="inputPhoto" type="text" placeholder="Dateipfad angeben...."><button onclick="addPhoto()">Hinzufügen</button></div>
+    </div>
+    <div id="loadPhotos" class="imgcontainer "></div>
+    <div id="singlePicture" class="singlePicture d-none"></div>
+
+</body>
+
+</html>
